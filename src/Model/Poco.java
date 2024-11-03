@@ -28,7 +28,7 @@ public class Poco {
         return proximo;
     }
 
-    public void semear() {
+    public void distribuir() {
         this.sementes++;
     }
 
@@ -36,7 +36,7 @@ public class Poco {
         return vez;
     }
 
-    boolean eSemeavel(NumeroJogador jogador) {
+    boolean podeDistribuir(NumeroJogador jogador) {
         return false;
     }
 
@@ -48,6 +48,7 @@ public class Poco {
         return Optional.empty();
     }
 
+    // Pegar sementes da casa oposta
     public Integer capturar() {
         if (this.getOposta().isEmpty()) {
             return 0;

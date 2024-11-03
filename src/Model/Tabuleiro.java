@@ -20,6 +20,7 @@ public class Tabuleiro {
 
     private Tabuleiro() {}
 
+    // Criação de um tabuleiro de acordo com as regras do jogo
     public Tabuleiro criar() {
         return criar(4, 6);
     }
@@ -29,6 +30,7 @@ public class Tabuleiro {
         return definicoes(sementes, 0, sementes, 0);
     }
 
+    // Definição e construção dos objetos do tabuleiro de acordo com a lógica de listas ligadas
     public Tabuleiro definicoes(List<Integer> cavasP1, int armazemP1, List<Integer> cavasP2, int armazemP2) {
         LinkedList<Cava> cavasUm = construirCavas(UM, cavasP1);
         LinkedList<Cava> cavasDois = construirCavas(DOIS, cavasP2);
@@ -51,6 +53,7 @@ public class Tabuleiro {
         return tabuleiro;
     }
 
+    // Construção das Cavas
     private static LinkedList<Cava> construirCavas(NumeroJogador numeroJogador, List<Integer> sementes) {
         LinkedList<Cava> cavas = new LinkedList<>();
         cavas.addLast(new Cava(numeroJogador, sementes.get(0)));

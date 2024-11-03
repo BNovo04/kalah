@@ -26,7 +26,7 @@ public class Cava extends Poco {
         this.oposta = oposta;
     }
 
-    boolean eSemeavel(NumeroJogador jogador) {
+    boolean podeDistribuir(NumeroJogador jogador) {
         return true;
     }
 
