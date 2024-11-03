@@ -4,6 +4,7 @@ import java.util.List;
 
 public record Jogador(NumeroJogador num, List<Cava> cavas, Armazem armazem) {
 
+    // Seleção da cava da qual as sementes serão movidas
     public Poco selecionarJogada(int numeroCava) {
         Cava cava = getCava(numeroCava);
         verificarTemSementes(cava);
@@ -15,10 +16,12 @@ public record Jogador(NumeroJogador num, List<Cava> cavas, Armazem armazem) {
         return poco;
     }
 
+    // Verificação se o jogo está encerrado
     public boolean completo() {
         return cavas.stream().allMatch(Cava::estaVazio);
     }
 
+    // Fim do jogo, distribuição das sementes restantes
     public void finalizar() {
         for (Cava cava: cavas) {
             armazem.distribuir(cava.pegar());
@@ -44,9 +47,9 @@ public record Jogador(NumeroJogador num, List<Cava> cavas, Armazem armazem) {
         Poco poco = cava;
         while (sementes > 0) {
             poco = poco.proximo();
-            if (poco.eSemeavel(num)) {
+            if (poco.podeDistribuir(num)) {
                 sementes--;
-                poco.semear();
+                poco.distribuir();
             };
         }
         return poco;

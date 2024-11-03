@@ -30,11 +30,12 @@ public class Jogo {
         return jogo;
     }
 
-    public Resultado selecionar(NumeroJogador num, int casa) {
+    // Seleção da cava a ser jogada
+    public Resultado selecionar(NumeroJogador num, int cava) {
         if (!jogador.num().equals(num)) {
             throw new IllegalStateException(String.format("Jogador %s ainda não pode jogar", num));
         }
-        Poco selecionado = jogador.selecionarJogada(casa);
+        Poco selecionado = jogador.selecionarJogada(cava);
         if (jogador.completo()) {
             outroJogador().finalizar();
             status = declararVencedor();
@@ -63,6 +64,7 @@ public class Jogo {
         return outroJogador();
     }
 
+    // Transição de jogador
     private Jogador outroJogador() {
         Tabuleiro.Jogadores jogadores = tabuleiro.getJogadores();
         return switch (jogador.num()) {
