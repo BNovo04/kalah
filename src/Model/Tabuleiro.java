@@ -18,7 +18,7 @@ public class Tabuleiro {
 
     private Jogadores jogadores;
 
-    private Tabuleiro() {}
+    //private Tabuleiro() {}
 
     // Criação de um tabuleiro de acordo com as regras do jogo
     public Tabuleiro criar() {
