@@ -1,5 +1,7 @@
 package Model.src.View;
 
+import Model.src.Model.NumeroJogador;
+
 import java.util.Scanner;
 
 public class IMenus {
@@ -19,12 +21,30 @@ public class IMenus {
         System.out.print("Por Favor selecionar uma opção (0-2): " + "\n");
     }
 
-    public static void MenuJogadas() {
-        System.out.println("------------------");
-        System.out.println("1. Escolher uma Casa (1-6)");
-        System.out.println("0. Sair");
-        System.out.println("------------------");
-        System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-1): " + "\n");
+    public static void MenuJogadas(NumeroJogador Jogador) {
+        if (Jogador == NumeroJogador.UM){
+            System.out.println("------------------");
+            System.out.println("Jogador " + Jogador + ":");
+            System.out.println("0. Escolher a Casa (0)");
+            System.out.println("1. Escolher a Casa (1)");
+            System.out.println("2. Escolher a Casa (2)");
+            System.out.println("3. Escolher a Casa (3)");
+            System.out.println("4. Escolher a Casa (4)");
+            System.out.println("5. Escolher a Casa (5)");
+            System.out.println("------------------");
+            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-1): " + "\n");
+        } else {
+            System.out.println("------------------");
+            System.out.println("Jogador " + Jogador + ":");
+            System.out.println("0. Escolher a Casa (6)");
+            System.out.println("1. Escolher a Casa (7)");
+            System.out.println("2. Escolher a Casa (8)");
+            System.out.println("3. Escolher a Casa (9)");
+            System.out.println("4. Escolher a Casa (10)");
+            System.out.println("5. Escolher a Casa (11)");
+            System.out.println("------------------");
+            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-1): " + "\n");
+        }
     }
 
     public static void MenuRegras(Scanner scanner){

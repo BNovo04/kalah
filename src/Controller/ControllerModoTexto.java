@@ -46,13 +46,13 @@ public class ControllerModoTexto {
             switch (opcao) {
                 case 1:
                     try {
+                        InterfaceTabuleiros.TabuleiroInicial();
                         do {
-                            InterfaceTabuleiros.TabuleiroInicial();
                             j = partida.getJogadorAtivo();
                             Jn = partida.getJogadorNumAtivo(j);
-                            Menu.MenuJogadas();
-                            Jogada = scanner.nextInt();
+                            Menu.MenuJogadas(Jn);
 
+                            Jogada = scanner.nextInt();
                             partida.selecionar(Jn, Jogada);
                             a = partida.declararVencedor();
 
