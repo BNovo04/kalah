@@ -44,7 +44,7 @@ public class Jogo {
         return new Resultado(status, jogador.num(), tabuleiro);
     }
 
-    private Status declararVencedor() {
+    public Status declararVencedor() {
         Tabuleiro.Jogadores jogadores = tabuleiro.getJogadores();
         int pontuacao1 = jogadores.jogador1().pontuacao();
         int pontuacao2 = jogadores.jogador2().pontuacao();
@@ -75,6 +75,10 @@ public class Jogo {
 
     public Jogador getJogadorAtivo() {
         return jogador;
+    }
+
+    public NumeroJogador getJogadorNumAtivo(Jogador jogador) {
+        return jogador.num();
     }
 
 }

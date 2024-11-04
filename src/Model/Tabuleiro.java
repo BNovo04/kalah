@@ -54,7 +54,7 @@ public class Tabuleiro {
     }
 
     // Construção das Cavas
-    private static LinkedList<Cava> construirCavas(NumeroJogador numeroJogador, List<Integer> sementes) {
+    public static LinkedList<Cava> construirCavas(NumeroJogador numeroJogador, List<Integer> sementes) {
         LinkedList<Cava> cavas = new LinkedList<>();
         cavas.addLast(new Cava(numeroJogador, sementes.get(0)));
         while (cavas.size() < sementes.size()) {

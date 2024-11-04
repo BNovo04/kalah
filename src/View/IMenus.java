@@ -24,15 +24,7 @@ public class IMenus {
         System.out.println("1. Escolher uma Casa (1-6)");
         System.out.println("0. Sair");
         System.out.println("------------------");
-        System.out.print("Por Favor selecionar uma opção (0-1): " + "\n");
-    }
-
-    public static void MenuCavas() {
-        System.out.println("------------------");
-        System.out.println("1. Casa (1-6)");
-        System.out.println("0. Sair");
-        System.out.println("------------------");
-        System.out.print("Por Favor selecionar uma opção (0-1): " + "\n");
+        System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-1): " + "\n");
     }
 
     public static void MenuRegras(Scanner scanner){

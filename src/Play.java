@@ -7,5 +7,6 @@ public class Play {
         ControllerModoTexto IniciarJogo = new ControllerModoTexto();
 
         IniciarJogo.Menus();
+        //IniciarJogo.Tabuleiros();
     }
 }

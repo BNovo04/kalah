@@ -6,7 +6,7 @@ public class Armazem extends Poco {
         super(vez, 0);
     }
 
-    Armazem(NumeroJogador vez, int sementes) {
+    public Armazem(NumeroJogador vez, int sementes) {
         super(vez, sementes);
     }
 
