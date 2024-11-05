@@ -20,7 +20,7 @@ public class Jogo {
 
     private Jogador jogador;
 
-    private Status status;
+    public Status status;
 
     public static Jogo criarTabuleiro(Tabuleiro tabuleiro) {
         Jogo jogo = new Jogo();
