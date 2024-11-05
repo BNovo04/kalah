@@ -19,10 +19,10 @@ public class ControllerModoTexto {
         ITabuleiro InterfaceTabuleiros = new ITabuleiro();
         IMenus Menu = new IMenus();
 
-        Tabuleiro Tabuleiro = new Tabuleiro();
-
+        Tabuleiro TabuleiroJogo = new Tabuleiro();
+        Tabuleiro tabule = TabuleiroJogo.criar();
         Jogo Iniciar = new Jogo();
-        Jogo partida = Iniciar.criarTabuleiro(Tabuleiro.criar());
+        Jogo partida = Iniciar.criarTabuleiro(tabule);
 
         Jogador jogador = null;
         NumeroJogador jogadorNumero;
@@ -32,6 +32,7 @@ public class ControllerModoTexto {
         int opcao = -1;
         int Jogada = -1;
 
+
         while (opcao != 0) {
             Menu.MenuPrincipal();
             opcao = scanner.nextInt();
@@ -40,17 +41,16 @@ public class ControllerModoTexto {
                 switch (opcao) {
                     case 1:
                         try {
-                            InterfaceTabuleiros.TabuleiroInicial();
-                            boolean jogoAtivo = true; // Variable to control the game loop
-                            while (jogoAtivo) {
+                            boolean jogoAtivo = true ; // Variable to control the game loop
+                            while (jogoAtivo == true) {
                                 try {
-                                    InterfaceTabuleiros.Tabuleirojogo();
                                     jogador = partida.getJogadorAtivo();
                                     jogadorNumero = partida.getJogadorNumAtivo(jogador);
+                                    InterfaceTabuleiros.Tabuleirojogo(tabule);
                                     Menu.MenuJogadas(jogadorNumero);
 
                                     Jogada = scanner.nextInt();
-                                    partida.selecionar(jogadorNumero, Jogada);
+                                    tabule = partida.selecionar(jogadorNumero, Jogada);
                                     avaliacaoJogo = partida.declararVencedor();
 
                                     if (avaliacaoJogo == Jogo.Status.ATIVO) {

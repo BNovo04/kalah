@@ -31,7 +31,7 @@ public class Jogo {
     }
 
     // Seleção da cava a ser jogada
-    public Resultado selecionar(NumeroJogador num, int cava) {
+    public Tabuleiro selecionar(NumeroJogador num, int cava) {
         if (!jogador.num().equals(num)) {
             throw new IllegalStateException(String.format("Jogador %s ainda não pode jogar", num));
         }
@@ -41,7 +41,8 @@ public class Jogo {
             status = declararVencedor();
         }
         jogador = proximoJogador(selecionado);
-        return new Resultado(status, jogador.num(), tabuleiro);
+        return tabuleiro;
+                //new Resultado(status, jogador.num(), tabuleiro);
     }
 
     public Status declararVencedor() {
