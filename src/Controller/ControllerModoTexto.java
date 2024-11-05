@@ -4,14 +4,10 @@ import Model.src.Model.*;
 import Model.src.View.IMenus;
 import Model.src.View.ITabuleiro;
 
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.List;
-
-
-
 
 public class ControllerModoTexto {
 
@@ -60,6 +56,7 @@ public class ControllerModoTexto {
                                     Menu.MenuJogadas(jogadorNumero);
 
                                     jogada = scanner.nextInt();
+                                    scanner.nextLine();
 
                                     Jogo.Resultado resultado = partida.selecionar(jogadorNumero, jogada);
                                     tabule = resultado.tabuleiro();
@@ -67,7 +64,13 @@ public class ControllerModoTexto {
 
                                     if (FinalJogo(avaliacaoJogo)) {
                                         InterfaceTabuleiros.Tabuleirojogo(tabule);
-                                        jogoAtivo = false;
+                                        Menu.MenuRotorno(1);
+                                        String confirmacao = scanner.nextLine();
+                                        if (confirmacao.isEmpty()){
+                                            jogoAtivo = false;
+                                            Menu.MenuRotorno(2);
+                                            continuarMenu = false;
+                                        }
                                     }
                                 } catch (Exception e) {
                                     Menu.MenuErros(1);
@@ -90,7 +93,7 @@ public class ControllerModoTexto {
                         break;
 
                     case 0:
-                        Menu.MenuErros(0);
+                        Menu.MenuRotorno(0);
                         continuarMenu = false;
                         break;
 

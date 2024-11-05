@@ -60,13 +60,13 @@ public class ITabuleiro {
                     "▌   ▓▓    ▓▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓          ▓▓    ▓▓   ▐\n" +
                     "▌  ▓        ▓      ▓  " + formatNumber(Cava.get(11).contar())  +"  ▓  ▓  " + formatNumber(Cava.get(10).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(9).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(8).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(7).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(6).contar())  + "  ▓        ▓        ▓  ▐\n" +
                     "▌  ▓        ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓        ▓  ▐\n" +
-                    "▌ ▓          ▓       ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓         ▓          ▓ ▐\n" +
+                    "▌ ▓          ▓       ▓11▓      ▓10▓      ▓09▓      ▓08▓      ▓07▓      ▓06▓         ▓          ▓ ▐\n" +
                     "▌ ▓    " + formatNumber(Armazem.get(1).contar())  + "    ▓                                                                      ▓    " + formatNumber(Armazem.get(0).contar()) + "    ▓ ▐\n" +
                     "▌ ▓          ▓       ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓         ▓          ▓ ▐\n" +
                     "▌  ▓        ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓        ▓  ▐\n" +
                     "▌  ▓        ▓      ▓  " + formatNumber(Cava.get(0).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(1).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(2).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(3).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(4).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(5).contar())  + "  ▓        ▓        ▓  ▐\n" +
                     "▌   ▓▓    ▓▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓          ▓▓    ▓▓   ▐\n" +
-                    "▌     ▓▓▓▓           ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓             ▓▓▓▓     ▐\n" +
+                    "▌     ▓J2▓           ▓00▓      ▓01▓      ▓02▓      ▓03▓      ▓04▓      ▓05▓             ▓J1▓     ▐\n" +
                     "▌                                                                                                ▐\n" +
                     "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 
@@ -78,13 +78,13 @@ public class ITabuleiro {
                     "▌   ▓▓    ▓▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓          ▓▓    ▓▓   ▐\n" +
                     "▌  ▓        ▓      ▓  " + formatNumber(Cava.get(11).contar()) +"  ▓  ▓  " + formatNumber(Cava.get(10).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(9).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(8).contar()) + "  ▓  ▓  "+ formatNumber(Cava.get(7).contar()) +"  ▓  ▓  " + formatNumber(Cava.get(6).contar()) + "  ▓        ▓        ▓  ▐\n" +
                     "▌  ▓        ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓        ▓  ▐\n" +
-                    "▌ ▓          ▓       ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓         ▓          ▓ ▐\n" +
+                    "▌ ▓          ▓       ▓11▓      ▓10▓      ▓09▓      ▓08▓      ▓07▓      ▓06▓         ▓          ▓ ▐\n" +
                     "▌ ▓    " + formatNumber(Armazem.get(1).contar())  + "    ▓                                                                      ▓    " + formatNumber(Armazem.get(0).contar())  + "    ▓ ▐\n" +
                     "▌ ▓          ▓        ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓        ▓          ▓ ▐\n" +
                     "▌  ▓        ▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓        ▓        ▓  ▐\n" +
                     "▌  ▓        ▓       ▓  " + formatNumber(Cava.get(0).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(1).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(2).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(3).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(4).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(5).contar()) + "  ▓       ▓        ▓  ▐\n" +
                     "▌   ▓▓    ▓▓         ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓▓    ▓▓   ▐\n" +
-                    "▌     ▓▓▓▓            ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓            ▓▓▓▓     ▐\n" +
+                    "▌     ▓J2▓            ▓00▓      ▓01▓      ▓02▓      ▓03▓      ▓04▓      ▓05▓            ▓J1▓     ▐\n" +
                     "▌                                                                                                ▐\n" +
                     "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 

@@ -27,22 +27,22 @@ public class IMenus {
             System.out.println("------------------");
             System.out.println("Jogador " + Jogador + ":");
             System.out.println("Escolha uma casa para mover suas sementes:");
-            System.out.println("1. Casa (0)");
-            System.out.println("2. Casa (1)");
-            System.out.println("3. Casa (2)");
-            System.out.println("4. Casa (3)");
-            System.out.println("5. Casa (4)");
-            System.out.println("6. Casa (5)");
+            System.out.println("1. Casa (00)");
+            System.out.println("2. Casa (01)");
+            System.out.println("3. Casa (02)");
+            System.out.println("4. Casa (03)");
+            System.out.println("5. Casa (04)");
+            System.out.println("6. Casa (05)");
             System.out.println("------------------");
             System.out.print("Digite o número da casa (1-6): " + "\n");
         } else {
             System.out.println("------------------");
             System.out.println("Jogador " + Jogador + ":");
             System.out.println("Escolha uma casa para mover suas sementes:");
-            System.out.println("1. Casa (6)");
-            System.out.println("2. Casa (7)");
-            System.out.println("3. Casa (8)");
-            System.out.println("4. Casa (9)");
+            System.out.println("1. Casa (06)");
+            System.out.println("2. Casa (07)");
+            System.out.println("3. Casa (08)");
+            System.out.println("4. Casa (09)");
             System.out.println("5. Casa (10)");
             System.out.println("6. Casa (11)");
             System.out.println("------------------");
@@ -102,6 +102,20 @@ public class IMenus {
         }
     }
 
+    public void MenuRotorno(int valor){
+        switch (valor){
+            case 1:
+                System.out.println("Gostaria de voltar para o Menu Principal?");
+                break;
+            case 2:
+                System.out.println("Retornando para o Menu Principal....");
+                break;
+            case 0:
+                System.out.println("Saindo...");
+                break;
+        }
+    }
+
     public void MenuErros(int cases){
         switch (cases) {
             case 1:
@@ -115,9 +129,6 @@ public class IMenus {
                 break;
             case 4:
                 System.out.println("Opção inválida.");
-                break;
-            case 0:
-                System.out.println("Saindo...");
                 break;
         }
     }
