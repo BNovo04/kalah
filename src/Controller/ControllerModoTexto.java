@@ -29,7 +29,7 @@ public class ControllerModoTexto {
         Tabuleiro Tabuleiro = new Tabuleiro();
 
         Jogo Iniciar = new Jogo();
-        Jogo partida = Iniciar.criarTabuleiro(Tabuleiro.criar(4,6));
+        Jogo partida = Iniciar.criarTabuleiro(Tabuleiro.criar());
 
         Jogador j = null;
         NumeroJogador Jn;
@@ -40,46 +40,65 @@ public class ControllerModoTexto {
         int Jogada = -1;
 
         while (opcao != 0) {
-            try {
             Menu.MenuPrincipal();
             opcao = scanner.nextInt();
-            switch (opcao) {
-                case 1:
-                    try {
-                        InterfaceTabuleiros.TabuleiroInicial();
-                        do {
-                            j = partida.getJogadorAtivo();
-                            Jn = partida.getJogadorNumAtivo(j);
-                            Menu.MenuJogadas(Jn);
+            boolean continuarMenu = true; // Control variable for the main menu loop
+            while (continuarMenu) {
+                switch (opcao) {
+                    case 1:
+                        try {
+                            InterfaceTabuleiros.TabuleiroInicial();
+                            boolean jogoAtivo = true; // Variable to control the game loop
+                            while (jogoAtivo) {
+                                try {
+                                    j = partida.getJogadorAtivo();
+                                    Jn = partida.getJogadorNumAtivo(j);
+                                    Menu.MenuJogadas(Jn);
 
-                            Jogada = scanner.nextInt();
-                            partida.selecionar(Jn, Jogada);
-                            a = partida.declararVencedor();
+                                    Jogada = scanner.nextInt();
+                                    partida.selecionar(Jn, Jogada);
+                                    a = partida.declararVencedor();
 
-                        } while (a != Jogo.Status.ATIVO);
+                                    // Check if the game is still active
+                                    if (a == Jogo.Status.ATIVO) {
+                                        continue; // Keep the loop going if the game is active
+                                    } else {
+                                        jogoAtivo = false; // End the loop if there's a winner
+                                        System.out.println("O jogo terminou!"); // Notify players
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao realizar a jogada. Tente novamente.");
+                                    scanner.nextLine(); // Clear the scanner buffer
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Erro ao iniciar o tabuleiro. Tente novamente.");
+                            scanner.nextLine(); // Clear the scanner buffer
+                        }
                         break;
-                    } catch (Exception e) {
-                        System.out.println("Erro. Tente novamente.");
-                        scanner.nextLine();
-                    }
-                case 2:
-                    try {
-                        Menu.MenuRegras(scanner);
+
+                    case 2:
+                        try {
+                            Menu.MenuRegras(scanner);
+                        } catch (Exception e) {
+                            System.out.println("Erro. Tente novamente.");
+                            scanner.nextLine(); // Clear the scanner buffer
+                        }
                         break;
-                    } catch (Exception e) {
-                        System.out.println("Erro. Tente novamente.");
-                        scanner.nextLine();
-                    }
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
+
+                    case 0:
+                        System.out.println("Saindo...");
+                        continuarMenu = false; // Exit the main menu loop
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida.");
+                }
             }
-            }catch (Exception e) {
-                System.out.println("Opção inválida.");
-                scanner.nextLine();
-            }
-        }scanner.close();
+
+// Close the scanner outside of the menu loop
+            scanner.close();
+
+        }
     }
 }

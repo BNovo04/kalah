@@ -43,7 +43,7 @@ public class IMenus {
             System.out.println("4. Escolher a Casa (10)");
             System.out.println("5. Escolher a Casa (11)");
             System.out.println("------------------");
-            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-1): " + "\n");
+            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-5): " + "\n");
         }
     }
 

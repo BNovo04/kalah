@@ -37,11 +37,11 @@ public class ITabuleiro {
         List<Cava> Cava = Tabuleiro.getCavas();
         List<Armazem> Armazem = Tabuleiro.getArmazens();
 
-        for (int i = 0; i > 12; i++){
-            Cava.get(i); //isso retorna uma Cava e não a Qtd de Sementes
+        for (int i = 0; i < 12; i++){
+            Cava.get(i).contar(); //isso retorna uma Cava e não a Qtd de Sementes
         }
-        for (int i = 0; i >1; i++) {
-            Armazem.get(i); //isso retorna um Armazém e não a Qtd de Sementes
+        for (int i = 0; i <1; i++) {
+            Armazem.get(i).contar(); //isso retorna um Armazém e não a Qtd de Sementes
         }
 
         if (S >= 0 && S <= 9 && Sa >= 0 && Sa <= 9) {
@@ -95,7 +95,7 @@ public class ITabuleiro {
                     "▌  ▓        ▓       ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓         ▓        ▓  ▐\n" +
                     "▌ ▓          ▓       ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓         ▓          ▓ ▐\n" +
                     "▌ ▓          ▓                                                                ▓          ▓ ▐\n" +
-                    "▌ ▓    " + Armazem.get(1) + "    ▓                                                                ▓    " + Sa + "    ▓ ▐\n" +
+                    "▌ ▓    " + Armazem.get(1).contar() + "    ▓                                                                ▓    " + Sa + "    ▓ ▐\n" +
                     "▌ ▓          ▓                                                                ▓          ▓ ▐\n" +
                     "▌ ▓          ▓        ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓        ▓          ▓ ▐\n" +
                     "▌  ▓        ▓        ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓        ▓        ▓  ▐\n" +
