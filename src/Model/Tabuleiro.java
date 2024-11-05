@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static Model.src.Model.NumeroJogador.UM;
 import static Model.src.Model.NumeroJogador.DOIS;
+import static Model.src.Model.NumeroJogador.UM;
 
 public class Tabuleiro {
 

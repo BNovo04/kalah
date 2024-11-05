@@ -1,5 +1,6 @@
 package Model.src.View;
 
+import Model.src.Model.Jogo;
 import Model.src.Model.NumeroJogador;
 
 import java.util.Scanner;
@@ -25,25 +26,27 @@ public class IMenus {
         if (Jogador == NumeroJogador.UM){
             System.out.println("------------------");
             System.out.println("Jogador " + Jogador + ":");
-            System.out.println("1. Escolher a Casa (0)");
-            System.out.println("2. Escolher a Casa (1)");
-            System.out.println("3. Escolher a Casa (2)");
-            System.out.println("4. Escolher a Casa (3)");
-            System.out.println("5. Escolher a Casa (4)");
-            System.out.println("6. Escolher a Casa (5)");
+            System.out.println("Escolha uma casa para mover suas sementes:");
+            System.out.println("1. Casa (0)");
+            System.out.println("2. Casa (1)");
+            System.out.println("3. Casa (2)");
+            System.out.println("4. Casa (3)");
+            System.out.println("5. Casa (4)");
+            System.out.println("6. Casa (5)");
             System.out.println("------------------");
-            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (1-6): " + "\n");
+            System.out.print("Digite o número da casa (1-6): " + "\n");
         } else {
             System.out.println("------------------");
             System.out.println("Jogador " + Jogador + ":");
-            System.out.println("1. Escolher a Casa (6)");
-            System.out.println("2. Escolher a Casa (7)");
-            System.out.println("3. Escolher a Casa (8)");
-            System.out.println("4. Escolher a Casa (9)");
-            System.out.println("5. Escolher a Casa (10)");
-            System.out.println("6. Escolher a Casa (11)");
+            System.out.println("Escolha uma casa para mover suas sementes:");
+            System.out.println("1. Casa (6)");
+            System.out.println("2. Casa (7)");
+            System.out.println("3. Casa (8)");
+            System.out.println("4. Casa (9)");
+            System.out.println("5. Casa (10)");
+            System.out.println("6. Casa (11)");
             System.out.println("------------------");
-            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (1-6): " + "\n");
+            System.out.print("Digite o número da casa (1-6): " + "\n");
         }
     }
 
@@ -86,6 +89,36 @@ public class IMenus {
                 scanner.nextLine();
             }
 
+        }
+    }
+
+    public void MenuFinaljogo(Jogo.Status partidaStatus){
+        if (partidaStatus == Jogo.Status.JOGADOR_UM_VENCEU ){
+            System.out.println("O jogador UM ganhou o Jogo!" );
+        } else if (partidaStatus == Jogo.Status.JOGADOR_DOIS_VENCEU) {
+            System.out.println("O jogador DOIS ganhou o Jogo!" );
+        } else if (partidaStatus == Jogo.Status.EMPATE){
+            System.out.println("O Jogo terminou em um Empate" );
+        }
+    }
+
+    public void MenuErros(int cases){
+        switch (cases) {
+            case 1:
+                System.out.println("Erro ao realizar a jogada. Tente novamente.");
+                break;
+            case 2:
+                System.out.println("Erro ao iniciar o tabuleiro. Tente novamente.");
+                break;
+            case 3:
+                System.out.println("Erro. Tente novamente.");
+                break;
+            case 4:
+                System.out.println("Opção inválida.");
+                break;
+            case 0:
+                System.out.println("Saindo...");
+                break;
         }
     }
 

@@ -15,9 +15,10 @@ import java.util.List;
 
 public class ControllerModoTexto {
 
-    private static boolean isGameOver(Jogo.Status partidaStatus) {
+    private static boolean FinalJogo(Jogo.Status partidaStatus) {
+        IMenus Menu = new IMenus();
         if (partidaStatus != Jogo.Status.ATIVO) {
-            System.out.println("O jogo terminou!" + partidaStatus);
+            Menu.MenuFinaljogo(partidaStatus);
             return true;
         }
         return false;
@@ -64,17 +65,17 @@ public class ControllerModoTexto {
                                     tabule = resultado.tabuleiro();
                                     avaliacaoJogo = resultado.status();
 
-                                    if (isGameOver(avaliacaoJogo)) {
+                                    if (FinalJogo(avaliacaoJogo)) {
                                         InterfaceTabuleiros.Tabuleirojogo(tabule);
                                         jogoAtivo = false;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Erro ao realizar a jogada. Tente novamente.");
+                                    Menu.MenuErros(1);
                                     scanner.nextLine();
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Erro ao iniciar o tabuleiro. Tente novamente.");
+                            Menu.MenuErros(2);
                             scanner.nextLine();
                         }
                         break;
@@ -83,18 +84,18 @@ public class ControllerModoTexto {
                         try {
                             Menu.MenuRegras(scanner);
                         } catch (Exception e) {
-                            System.out.println("Erro. Tente novamente.");
+                            Menu.MenuErros(3);
                             scanner.nextLine();
                         }
                         break;
 
                     case 0:
-                        System.out.println("Saindo...");
+                        Menu.MenuErros(0);
                         continuarMenu = false;
                         break;
 
                     default:
-                        System.out.println("Opção inválida.");
+                        Menu.MenuErros(4);
                 }
             }
         }
