@@ -23,6 +23,7 @@ public class ControllerModoTexto {
         Tabuleiro tabule = TabuleiroJogo.criar();
         Jogo Iniciar = new Jogo();
         Jogo partida = Iniciar.criarTabuleiro(tabule);
+        boolean jogoAtivo = true ;
 
         Jogador jogador = null;
         NumeroJogador jogadorNumero;
@@ -41,7 +42,7 @@ public class ControllerModoTexto {
                 switch (opcao) {
                     case 1:
                         try {
-                            boolean jogoAtivo = true ; // Variable to control the game loop
+                            // Variable to control the game loop
                             while (jogoAtivo == true) {
                                 try {
                                     jogador = partida.getJogadorAtivo();
@@ -50,8 +51,9 @@ public class ControllerModoTexto {
                                     Menu.MenuJogadas(jogadorNumero);
 
                                     Jogada = scanner.nextInt();
-                                    tabule = partida.selecionar(jogadorNumero, Jogada);
-                                    avaliacaoJogo = partida.declararVencedor();
+                                    tabule = partida.selecionar(jogadorNumero, Jogada).tabuleiro();
+                                    System.out.println("Check");
+                                    avaliacaoJogo = partida.selecionar(jogadorNumero, Jogada).status();
 
                                     if (avaliacaoJogo == Jogo.Status.ATIVO) {
                                         continue; // Keep the loop going if the game is active
