@@ -14,13 +14,6 @@ import java.util.List;
 
 
 public class ControllerModoTexto {
-    public static void Tabuleiros() {
-        ITabuleiro InterfaceTabuleiros = new ITabuleiro();
-        int s = 4;
-        int sa = 40;
-        InterfaceTabuleiros.TabuleiroInicial();
-        InterfaceTabuleiros.Tabuleirojogo(s, sa);
-    }
 
     public static void Menus() {
         ITabuleiro InterfaceTabuleiros = new ITabuleiro();
@@ -31,9 +24,9 @@ public class ControllerModoTexto {
         Jogo Iniciar = new Jogo();
         Jogo partida = Iniciar.criarTabuleiro(Tabuleiro.criar());
 
-        Jogador j = null;
-        NumeroJogador Jn;
-        Jogo.Status a;
+        Jogador jogador = null;
+        NumeroJogador jogadorNumero;
+        Jogo.Status avaliacaoJogo;
 
         Scanner scanner = new Scanner(System.in);
         int opcao = -1;
@@ -51,29 +44,29 @@ public class ControllerModoTexto {
                             boolean jogoAtivo = true; // Variable to control the game loop
                             while (jogoAtivo) {
                                 try {
-                                    j = partida.getJogadorAtivo();
-                                    Jn = partida.getJogadorNumAtivo(j);
-                                    Menu.MenuJogadas(Jn);
+                                    InterfaceTabuleiros.Tabuleirojogo();
+                                    jogador = partida.getJogadorAtivo();
+                                    jogadorNumero = partida.getJogadorNumAtivo(jogador);
+                                    Menu.MenuJogadas(jogadorNumero);
 
                                     Jogada = scanner.nextInt();
-                                    partida.selecionar(Jn, Jogada);
-                                    a = partida.declararVencedor();
+                                    partida.selecionar(jogadorNumero, Jogada);
+                                    avaliacaoJogo = partida.declararVencedor();
 
-                                    // Check if the game is still active
-                                    if (a == Jogo.Status.ATIVO) {
+                                    if (avaliacaoJogo == Jogo.Status.ATIVO) {
                                         continue; // Keep the loop going if the game is active
                                     } else {
-                                        jogoAtivo = false; // End the loop if there's a winner
-                                        System.out.println("O jogo terminou!"); // Notify players
+                                        jogoAtivo = false; // Finaliza o loop caso há um vencedor ou empate
+                                        System.out.println("O jogo terminou!");
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Erro ao realizar a jogada. Tente novamente.");
-                                    scanner.nextLine(); // Clear the scanner buffer
+                                    scanner.nextLine();
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Erro ao iniciar o tabuleiro. Tente novamente.");
-                            scanner.nextLine(); // Clear the scanner buffer
+                           System.out.println("Erro ao iniciar o tabuleiro. Tente novamente.");
+                           scanner.nextLine();
                         }
                         break;
 
@@ -95,10 +88,7 @@ public class ControllerModoTexto {
                         System.out.println("Opção inválida.");
                 }
             }
-
-// Close the scanner outside of the menu loop
             scanner.close();
-
         }
     }
 }

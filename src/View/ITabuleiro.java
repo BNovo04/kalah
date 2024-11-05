@@ -31,20 +31,51 @@ public class ITabuleiro {
 
 
     }
-    public static void Tabuleirojogo(int S, int Sa) {
 
+    public static Boolean ValorCava(){
+        Boolean cava_maior = false;
         Tabuleiro Tabuleiro = new Tabuleiro();
         List<Cava> Cava = Tabuleiro.getCavas();
+
+        for (int i = 0; i > 12; i++){
+            int sememtesCava = Cava.get(i).contar();
+            if(sememtesCava >= 10 && sememtesCava <= 48){
+                cava_maior = true;
+                return cava_maior;
+            } else if (sememtesCava >= 0 && sememtesCava <= 9){
+                cava_maior = false;
+                return cava_maior;
+            }
+        }
+        return cava_maior;
+    }
+
+    public static Boolean ValorArmazem(){
+        Boolean armazem_maior = false;
+        Tabuleiro Tabuleiro = new Tabuleiro();
         List<Armazem> Armazem = Tabuleiro.getArmazens();
 
         for (int i = 0; i > 12; i++){
-            Cava.get(i); //isso retorna uma Cava e não a Qtd de Sementes
+            int sememtesArmazem = Armazem.get(i).contar();
+            if(sememtesArmazem >= 10 && sememtesArmazem <= 48){
+                armazem_maior = true;
+                return armazem_maior;
+            } else if (sememtesArmazem >= 0 && sememtesArmazem <= 9){
+                armazem_maior = false;
+                return armazem_maior;
+            }
         }
-        for (int i = 0; i >1; i++) {
-            Armazem.get(i); //isso retorna um Armazém e não a Qtd de Sementes
-        }
+        return armazem_maior;
+    }
 
-        if (S >= 0 && S <= 9 && Sa >= 0 && Sa <= 9) {
+    public static void Tabuleirojogo() {
+        Tabuleiro Tabuleiro = new Tabuleiro();
+        List<Cava> Cava = Tabuleiro.getCavas();
+        List<Armazem> Armazem = Tabuleiro.getArmazens();
+        boolean cava = ValorCava();
+        boolean armazem = ValorArmazem();
+
+        if (cava == false && armazem == false) {
             System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n" +
                     "▌                                                                                        ▐\n" +
                     "▌                                                                                        ▐\n" +
@@ -64,7 +95,7 @@ public class ITabuleiro {
                     "▌                                                                                        ▐\n" +
                     "▌                                                                                        ▐\n" +
                     "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
-        } else if (S >= 10 && S <= 48 && Sa >= 10 && Sa <= 48){
+        } else if (cava == true && armazem == true){
             System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n" +
                     "▌                                                                                                ▐\n" +
                     "▌                                                                                                ▐\n" +
@@ -85,7 +116,7 @@ public class ITabuleiro {
                     "▌                                                                                                ▐\n" +
                     "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 
-        } else if (S >= 0 && S <= 9 && Sa >= 10 && Sa <= 48){
+        } else if (cava == false && armazem == true){
             System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n" +
                     "▌                                                                                          ▐\n" +
                     "▌                                                                                          ▐\n" +
@@ -95,7 +126,7 @@ public class ITabuleiro {
                     "▌  ▓        ▓       ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓         ▓        ▓  ▐\n" +
                     "▌ ▓          ▓       ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓         ▓          ▓ ▐\n" +
                     "▌ ▓          ▓                                                                ▓          ▓ ▐\n" +
-                    "▌ ▓    " + Armazem.get(1) + "    ▓                                                                ▓    " + Sa + "    ▓ ▐\n" +
+                    "▌ ▓    " + Armazem.get(1) + "    ▓                                                                ▓    " + Armazem.get(0) + "    ▓ ▐\n" +
                     "▌ ▓          ▓                                                                ▓          ▓ ▐\n" +
                     "▌ ▓          ▓        ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓      ▓▓▓        ▓          ▓ ▐\n" +
                     "▌  ▓        ▓        ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓    ▓   ▓        ▓        ▓  ▐\n" +
@@ -106,7 +137,7 @@ public class ITabuleiro {
                     "▌                                                                                          ▐\n" +
                     "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
 
-        } else if (S >= 10 && S <= 48 && Sa >= 0 && Sa <= 9){
+        } else if (cava == true && armazem == false){
             System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n" +
                     "▌                                                                                              ▐\n" +
                     "▌                                                                                              ▐\n" +
@@ -116,7 +147,7 @@ public class ITabuleiro {
                     "▌  ▓       ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓       ▓  ▐\n" +
                     "▌ ▓         ▓       ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓         ▓         ▓ ▐\n" +
                     "▌ ▓         ▓                                                                      ▓         ▓ ▐\n" +
-                    "▌ ▓    " + Armazem.get(1) + "    ▓                                                                      ▓    " + Sa + "    ▓ ▐\n" +
+                    "▌ ▓    " + Armazem.get(1) + "    ▓                                                                      ▓    " + Armazem.get(0) + "    ▓ ▐\n" +
                     "▌ ▓         ▓                                                                      ▓         ▓ ▐\n" +
                     "▌ ▓         ▓        ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓        ▓         ▓ ▐\n" +
                     "▌  ▓       ▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓        ▓       ▓  ▐\n" +

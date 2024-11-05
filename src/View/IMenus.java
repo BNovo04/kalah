@@ -25,25 +25,25 @@ public class IMenus {
         if (Jogador == NumeroJogador.UM){
             System.out.println("------------------");
             System.out.println("Jogador " + Jogador + ":");
-            System.out.println("0. Escolher a Casa (0)");
-            System.out.println("1. Escolher a Casa (1)");
-            System.out.println("2. Escolher a Casa (2)");
-            System.out.println("3. Escolher a Casa (3)");
-            System.out.println("4. Escolher a Casa (4)");
-            System.out.println("5. Escolher a Casa (5)");
+            System.out.println("1. Escolher a Casa (0)");
+            System.out.println("2. Escolher a Casa (1)");
+            System.out.println("3. Escolher a Casa (2)");
+            System.out.println("4. Escolher a Casa (3)");
+            System.out.println("5. Escolher a Casa (4)");
+            System.out.println("6. Escolher a Casa (5)");
             System.out.println("------------------");
-            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-1): " + "\n");
+            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (1-6): " + "\n");
         } else {
             System.out.println("------------------");
             System.out.println("Jogador " + Jogador + ":");
-            System.out.println("0. Escolher a Casa (6)");
-            System.out.println("1. Escolher a Casa (7)");
-            System.out.println("2. Escolher a Casa (8)");
-            System.out.println("3. Escolher a Casa (9)");
-            System.out.println("4. Escolher a Casa (10)");
-            System.out.println("5. Escolher a Casa (11)");
+            System.out.println("1. Escolher a Casa (6)");
+            System.out.println("2. Escolher a Casa (7)");
+            System.out.println("3. Escolher a Casa (8)");
+            System.out.println("4. Escolher a Casa (9)");
+            System.out.println("5. Escolher a Casa (10)");
+            System.out.println("6. Escolher a Casa (11)");
             System.out.println("------------------");
-            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (0-5): " + "\n");
+            System.out.print("Por Favor selecionar uma Casa para mover suas sementes (1-6): " + "\n");
         }
     }
 
