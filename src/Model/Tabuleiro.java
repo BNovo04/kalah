@@ -12,7 +12,7 @@ public class Tabuleiro {
 
     public record Jogadores(Jogador jogador1, Jogador jogador2) {}
 
-    private List<Cava> cavas;
+    private List<Casa> Casas;
 
     private List<Armazem> armazens;
 
@@ -31,60 +31,60 @@ public class Tabuleiro {
     }
 
     // Definição e construção dos objetos do tabuleiro de acordo com a lógica de listas ligadas
-    public Tabuleiro definicoes(List<Integer> cavasP1, int armazemP1, List<Integer> cavasP2, int armazemP2) {
-        LinkedList<Cava> cavasUm = construirCavas(UM, cavasP1);
-        LinkedList<Cava> cavasDois = construirCavas(DOIS, cavasP2);
-        opostasMutuamente(cavasUm, cavasDois);
+    public Tabuleiro definicoes(List<Integer> CasasP1, int armazemP1, List<Integer> CasasP2, int armazemP2) {
+        LinkedList<Casa> CasasUm = construirCasas(UM, CasasP1);
+        LinkedList<Casa> CasasDois = construirCasas(DOIS, CasasP2);
+        opostasMutuamente(CasasUm, CasasDois);
 
         Armazem armazemUm = new Armazem(UM, armazemP1);
         Armazem armazemDois = new Armazem(DOIS, armazemP2);
 
-        listaCircular(cavasUm, armazemUm, cavasDois, armazemDois);
+        listaCircular(CasasUm, armazemUm, CasasDois, armazemDois);
 
-        Jogador jogadorUm = new Jogador(UM, cavasUm, armazemUm);
-        Jogador jogadorDois = new Jogador(DOIS, cavasDois, armazemDois);
+        Jogador jogadorUm = new Jogador(UM, CasasUm, armazemUm);
+        Jogador jogadorDois = new Jogador(DOIS, CasasDois, armazemDois);
 
         Tabuleiro tabuleiro = new Tabuleiro();
-        tabuleiro.cavas = new ArrayList<>(cavasUm);
-        tabuleiro.cavas.addAll(cavasDois);
+        tabuleiro.Casas = new ArrayList<>(CasasUm);
+        tabuleiro.Casas.addAll(CasasDois);
         tabuleiro.armazens = List.of(armazemUm, armazemDois);
         tabuleiro.jogadores = new Jogadores(jogadorUm, jogadorDois);
 
         return tabuleiro;
     }
 
-    // Construção das Cavas
-    public static LinkedList<Cava> construirCavas(NumeroJogador numeroJogador, List<Integer> sementes) {
-        LinkedList<Cava> cavas = new LinkedList<>();
-        cavas.addLast(new Cava(numeroJogador, sementes.get(0)));
-        while (cavas.size() < sementes.size()) {
-            Cava cava = new Cava(numeroJogador, sementes.get(cavas.size()));
-            cavas.getLast().setProximo(cava);
-            cavas.addLast(cava);
+    // Construção das Casas
+    public static LinkedList<Casa> construirCasas(NumeroJogador numeroJogador, List<Integer> sementes) {
+        LinkedList<Casa> Casas = new LinkedList<>();
+        Casas.addLast(new Casa(numeroJogador, sementes.get(0)));
+        while (Casas.size() < sementes.size()) {
+            Casa Casa = new Casa(numeroJogador, sementes.get(Casas.size()));
+            Casas.getLast().setProximo(Casa);
+            Casas.addLast(Casa);
         }
-        return cavas;
+        return Casas;
     }
 
-    // Função para definir se as cavas são opostas
-    private void opostasMutuamente(List<Cava> cavasUm, List<Cava> cavasDois) {
-        for (int i=0; i< cavasUm.size(); i++) {
-            Cava um = cavasUm.get(i);
-            Cava dois = cavasDois.get(cavasDois.size() - i - 1);
+    // Função para definir se as Casas são opostas
+    private void opostasMutuamente(List<Casa> CasasUm, List<Casa> CasasDois) {
+        for (int i=0; i< CasasUm.size(); i++) {
+            Casa um = CasasUm.get(i);
+            Casa dois = CasasDois.get(CasasDois.size() - i - 1);
             um.setOposta(dois);
             dois.setOposta(um);
         }
     }
 
     // Função para definir atributos da lista circular
-    private void listaCircular(LinkedList<Cava> cavasUm, Armazem armazemUm, LinkedList<Cava> cavasDois, Armazem armazemDois) {
-        cavasUm.getLast().setProximo(armazemUm);
-        armazemUm.setProximo(cavasDois.getFirst());
-        cavasDois.getLast().setProximo(armazemDois);
-        armazemDois.setProximo(cavasUm.getFirst());
+    private void listaCircular(LinkedList<Casa> CasasUm, Armazem armazemUm, LinkedList<Casa> CasasDois, Armazem armazemDois) {
+        CasasUm.getLast().setProximo(armazemUm);
+        armazemUm.setProximo(CasasDois.getFirst());
+        CasasDois.getLast().setProximo(armazemDois);
+        armazemDois.setProximo(CasasUm.getFirst());
     }
 
-    public List<Cava> getCavas() {
-        return cavas;
+    public List<Casa> getCasas() {
+        return Casas;
     }
 
     public List<Armazem> getArmazens() {

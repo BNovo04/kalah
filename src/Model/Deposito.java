@@ -2,15 +2,15 @@ package Model.src.Model;
 
 import java.util.Optional;
 
-public class Poco {
+public class Deposito {
 
     protected int sementes;
 
-    private Poco proximo;
+    private Deposito proximo;
 
     protected final NumeroJogador vez;
 
-    Poco(NumeroJogador vez, int sementes) {
+    Deposito(NumeroJogador vez, int sementes) {
         this.vez = vez;
         this.sementes = sementes;
     }
@@ -19,11 +19,11 @@ public class Poco {
         return sementes;
     }
 
-    public Poco proximo() {
+    public Deposito proximo() {
         return proximo;
     }
 
-    public Poco setProximo(Poco proximo) {
+    public Deposito setProximo(Deposito proximo) {
         this.proximo = proximo;
         return proximo;
     }
@@ -44,7 +44,7 @@ public class Poco {
         return this.sementes == 0;
     }
 
-    public Optional<Cava> getOposta() {
+    public Optional<Casa> getOposta() {
         return Optional.empty();
     }
 

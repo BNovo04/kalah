@@ -2,29 +2,29 @@ package Model.src.Model;
 
 import java.util.List;
 
-public record Jogador(NumeroJogador num, List<Cava> cavas, Armazem armazem) {
+public record Jogador(NumeroJogador num, List<Casa> casas, Armazem armazem) {
 
-    // Seleção da cava da qual as sementes serão movidas
-    public Poco selecionarJogada(int numeroCava) {
-        Cava cava = getCava(numeroCava);
-        verificarTemSementes(cava);
-        Poco poco = executarJogada(cava);
-        if (capturarOposta(poco)) {
-            armazem.distribuir(poco.pegar());
-            armazem.distribuir(poco.capturar());
+    // Seleção da casa da qual as sementes serão movidas
+    public Deposito selecionarJogada(int numeroCasa) {
+        Casa casa = getCasa(numeroCasa);
+        verificarTemSementes(casa);
+        Deposito Deposito = executarJogada(casa);
+        if (capturarOposta(Deposito)) {
+            armazem.distribuir(Deposito.pegar());
+            armazem.distribuir(Deposito.capturar());
         }
-        return poco;
+        return Deposito;
     }
 
     // Verificação se o jogo está encerrado
     public boolean completo() {
-        return cavas.stream().allMatch(Cava::estaVazio);
+        return casas.stream().allMatch(Casa::estaVazio);
     }
 
     // Fim do jogo, distribuição das sementes restantes
     public void finalizar() {
-        for (Cava cava: cavas) {
-            armazem.distribuir(cava.pegar());
+        for (Casa casa: casas) {
+            armazem.distribuir(casa.pegar());
         }
     }
 
@@ -32,34 +32,34 @@ public record Jogador(NumeroJogador num, List<Cava> cavas, Armazem armazem) {
         return armazem.contar();
     }
 
-    private boolean capturarOposta(Poco poco) {
-        return poco.contar() == 1 && poco.getOposta().isPresent();
+    private boolean capturarOposta(Deposito Deposito) {
+        return Deposito.contar() == 1 && Deposito.getOposta().isPresent();
     }
 
-    private void verificarTemSementes(Cava cava) {
-        if (cava.estaVazio()) {
-            throw new IllegalArgumentException("Cava deve ter sementes para jogar");
+    private void verificarTemSementes(Casa casa) {
+        if (casa.estaVazio()) {
+            throw new IllegalArgumentException("Casa deve ter sementes para jogar");
         }
     }
 
-    private Poco executarJogada(Cava cava) {
-        Integer sementes = cava.pegar();
-        Poco poco = cava;
+    private Deposito executarJogada(Casa casa) {
+        Integer sementes = casa.pegar();
+        Deposito Deposito = casa;
         while (sementes > 0) {
-            poco = poco.proximo();
-            if (poco.podeDistribuir(num)) {
+            Deposito = Deposito.proximo();
+            if (Deposito.podeDistribuir(num)) {
                 sementes--;
-                poco.distribuir();
+                Deposito.distribuir();
             };
         }
-        return poco;
+        return Deposito;
     }
 
-    private Cava getCava(int numeroCava) {
-        if (numeroCava < 1 || numeroCava > cavas.size()) {
-            throw new IllegalArgumentException("O número da cava deve estar entre 1 e " + cavas.size());
+    private Casa getCasa(int numeroCasa) {
+        if (numeroCasa < 1 || numeroCasa > casas.size()) {
+            throw new IllegalArgumentException("O número da casa deve estar entre 1 e " + casas.size());
         }
-        return this.cavas.get(numeroCava - 1);
+        return this.casas.get(numeroCasa - 1);
     }
 
 }

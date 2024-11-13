@@ -22,12 +22,12 @@ public class Jogo {
 
     public Status status;
 
-    public static Jogo criarTabuleiro(Tabuleiro tabuleiro) {
+    public Jogo criarTabuleiro(Tabuleiro tabuleiro) {
         Jogo jogo = new Jogo();
         jogo.tabuleiro = tabuleiro;
         jogo.jogador = tabuleiro.getJogadores().jogador1();
         jogo.status = Status.ATIVO;
-        return jogo;
+        return jogo ;
     }
 
     // Seleção da cava a ser jogada
@@ -35,13 +35,13 @@ public class Jogo {
         if (!jogador.num().equals(num)) {
             throw new IllegalStateException(String.format("Jogador %s ainda não pode jogar", num));
         }
-        Poco selecionado = jogador.selecionarJogada(cava);
+        Deposito selecionado = jogador.selecionarJogada(cava);
         if (jogador.completo()) {
             outroJogador().finalizar();
             status = declararVencedor();
         }
         else{
-        jogador = proximoJogador(selecionado);}
+            jogador = proximoJogador(selecionado);}
         return new Resultado(status, jogador.num(), tabuleiro);
     }
 
@@ -58,7 +58,7 @@ public class Jogo {
         return Status.EMPATE;
     }
 
-    public Jogador proximoJogador(Poco aterrissado) {
+    public Jogador proximoJogador(Deposito aterrissado) {
         if (aterrissado.equals(jogador.armazem())) {
             return jogador;
         }

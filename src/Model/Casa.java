@@ -2,11 +2,11 @@ package Model.src.Model;
 
 import java.util.Optional;
 
-public class Cava extends Poco {
+public class Casa extends Deposito {
 
-    private Cava oposta;
+    private Casa oposta;
 
-    Cava(NumeroJogador dono, int sementes) {
+    Casa(NumeroJogador dono, int sementes) {
         super(dono, sementes);
     }
 
@@ -18,11 +18,11 @@ public class Cava extends Poco {
     }
 
     @Override
-    public Optional<Cava> getOposta() {
+    public Optional<Casa> getOposta() {
         return Optional.ofNullable(oposta);
     }
 
-    public void setOposta(Cava oposta) {
+    public void setOposta(Casa oposta) {
         this.oposta = oposta;
     }
 

@@ -4,30 +4,27 @@ import Model.src.Model.*;
 import Model.src.View.IMenus;
 import Model.src.View.ITabuleiro;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.List;
 
 public class ControllerModoTexto {
 
-    private static boolean FinalJogo(Jogo.Status partidaStatus) {
-        IMenus Menu = new IMenus();
+    private static boolean finalJogo(Jogo.Status partidaStatus) {
+        IMenus menu = new IMenus();
         if (partidaStatus != Jogo.Status.ATIVO) {
-            Menu.MenuFinaljogo(partidaStatus);
+            menu.menuFinaljogo(partidaStatus);
             return true;
         }
         return false;
     }
 
-    public static void Menus() {
-        ITabuleiro InterfaceTabuleiros = new ITabuleiro();
-        IMenus Menu = new IMenus();
+    public void menus() {
+        ITabuleiro interfaceTabuleiros = new ITabuleiro();
+        IMenus menu = new IMenus();
 
-        Tabuleiro TabuleiroJogo = new Tabuleiro();
-        Tabuleiro tabule = TabuleiroJogo.criar();
+        Tabuleiro tabuleiroPartida = new Tabuleiro();
+        Tabuleiro tabuleiroInstanciado  = tabuleiroPartida.criar();
         Jogo Iniciar = new Jogo();
-        Jogo partida = Iniciar.criarTabuleiro(tabule);
+        Jogo partida = Iniciar.criarTabuleiro(tabuleiroInstanciado);
         boolean jogoAtivo = true;
 
         Jogador jogador;
@@ -39,7 +36,7 @@ public class ControllerModoTexto {
         int jogada;
 
         while (opcao != 0) {
-            Menu.MenuPrincipal();
+            menu.menuPrincipal();
             opcao = scanner.nextInt();
             boolean continuarMenu = true;
 
@@ -52,53 +49,54 @@ public class ControllerModoTexto {
                                     jogador = partida.getJogadorAtivo();
                                     jogadorNumero = partida.getJogadorNumAtivo(jogador);
 
-                                    InterfaceTabuleiros.Tabuleirojogo(tabule);
-                                    Menu.MenuJogadas(jogadorNumero);
+                                    interfaceTabuleiros.tabuleiroJogo(tabuleiroInstanciado);
+                                    menu.menuJogadas(jogadorNumero);
 
                                     jogada = scanner.nextInt();
                                     scanner.nextLine();
 
                                     Jogo.Resultado resultado = partida.selecionar(jogadorNumero, jogada);
-                                    tabule = resultado.tabuleiro();
+                                    tabuleiroInstanciado = resultado.tabuleiro();
                                     avaliacaoJogo = resultado.status();
 
-                                    if (FinalJogo(avaliacaoJogo)) {
-                                        InterfaceTabuleiros.Tabuleirojogo(tabule);
-                                        Menu.MenuRotorno(1);
+                                    if (finalJogo(avaliacaoJogo)) {
+                                        interfaceTabuleiros.tabuleiroJogo(tabuleiroInstanciado);
+                                        menu.menuRetorno(1);
                                         String confirmacao = scanner.nextLine();
                                         if (confirmacao.isEmpty()){
                                             jogoAtivo = false;
-                                            Menu.MenuRotorno(2);
+                                            menu.menuRetorno(2);
                                             continuarMenu = false;
                                         }
                                     }
                                 } catch (Exception e) {
-                                    Menu.MenuErros(1);
+                                    menu.menuErros(1);
                                     scanner.nextLine();
                                 }
                             }
                         } catch (Exception e) {
-                            Menu.MenuErros(2);
+                            menu.menuErros(2);
                             scanner.nextLine();
                         }
                         break;
 
                     case 2:
-                        try {
-                            Menu.MenuRegras(scanner);
-                        } catch (Exception e) {
-                            Menu.MenuErros(3);
-                            scanner.nextLine();
+                        menu.menuRegras();
+                        menu.menuRetorno(1);
+                        int confirmacao = scanner.nextInt();
+                        if (confirmacao == 0){
+                            menu.menuRetorno(2);
+                            continuarMenu = false;
                         }
                         break;
 
                     case 0:
-                        Menu.MenuRotorno(0);
+                        menu.menuRetorno(0);
                         continuarMenu = false;
                         break;
 
                     default:
-                        Menu.MenuErros(4);
+                        menu.menuErros(4);
                 }
             }
         }

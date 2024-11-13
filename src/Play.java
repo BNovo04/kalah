@@ -4,9 +4,8 @@ import Model.src.Controller.ControllerModoTexto;
 
 public class Play {
     public static void main(String[] args) {
-        ControllerModoTexto IniciarJogo = new ControllerModoTexto();
+        ControllerModoTexto iniciarJogo = new ControllerModoTexto();
 
-        IniciarJogo.Menus();
-        //IniciarJogo.Tabuleiros();
+        iniciarJogo.menus();
     }
 }

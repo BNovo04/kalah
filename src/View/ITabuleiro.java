@@ -1,56 +1,55 @@
 package Model.src.View;
 
 import Model.src.Model.Armazem;
-import Model.src.Model.Cava;
+import Model.src.Model.Casa;
 import Model.src.Model.Tabuleiro;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class ITabuleiro {
 
-    public static Boolean ValorCava(List<Cava> Cava){
-        Boolean cava_maior = false;
+    public Boolean valorCasa(List<Casa> Casa){
+        Boolean casa_maior = false;
         int i = 0;
-        while (i < Cava.size()){
-            int sememtesCava = Cava.get(i).contar();
-            if(sememtesCava >= 10 && sememtesCava <= 48){
-                cava_maior = true;
-                return cava_maior;
-            }else if (sememtesCava >= 0 && sememtesCava <= 9){
-                cava_maior = false;
+        while (i < Casa.size()){
+            int sememtesCasa = Casa.get(i).contar();
+            if(sememtesCasa >= 10 && sememtesCasa <= 48){
+                casa_maior = true;
+                return casa_maior;
+            }else if (sememtesCasa >= 0 && sememtesCasa <= 9){
+                casa_maior = false;
             }
             i++;
         }
-        return cava_maior;
+        return casa_maior;
     }
 
-    public static Boolean ValorArmazem(List<Armazem> Armazem){
+    public Boolean valorArmazem(List<Armazem> Armazem){
         Boolean armazem_maior = false;
         int i = 0;
-            while (i < Armazem.size()){
-                int sememtesArmazem = Armazem.get(i).contar();
-                if(sememtesArmazem >= 10 && sememtesArmazem <= 48){
-                    armazem_maior = true;
-                    return armazem_maior;
-                } else if (sememtesArmazem >= 0 && sememtesArmazem <= 9){
-                    armazem_maior = false;
-                }
-                i++;
+        while (i < Armazem.size()){
+            int sememtesArmazem = Armazem.get(i).contar();
+            if(sememtesArmazem >= 10 && sememtesArmazem <= 48){
+                armazem_maior = true;
+                return armazem_maior;
+            } else if (sememtesArmazem >= 0 && sememtesArmazem <= 9){
+                armazem_maior = false;
             }
+            i++;
+        }
         return armazem_maior;
     }
 
-    static String formatNumber(int num) {
-        int width = 2;
-        return String.format("%-" + width + "d", num); // Left-align numbers within a fixed width
+    static String formatacaoNumero(int num) {
+        int tamanho = 2;
+        return String.format("%-" + tamanho + "d", num);
     }
 
-    public static void Tabuleirojogo(Tabuleiro tabuleiro) {
-        List<Cava> Cava = tabuleiro.getCavas();
+    public void tabuleiroJogo(Tabuleiro tabuleiro) {
+        List<Casa> Casa = tabuleiro.getCasas();
         List<Armazem> Armazem = tabuleiro.getArmazens();
-        boolean cava = ValorCava(Cava);
-        boolean armazem = ValorArmazem(Armazem);
+        boolean cava = valorCasa(Casa);
+        boolean armazem = valorArmazem(Armazem);
 
         if (cava == false && armazem == false) {
 
@@ -58,13 +57,13 @@ public class ITabuleiro {
                     "▌                                                                                                ▐\n" +
                     "▌     ▓▓▓▓           ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓             ▓▓▓▓     ▐\n" +
                     "▌   ▓▓    ▓▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓          ▓▓    ▓▓   ▐\n" +
-                    "▌  ▓        ▓      ▓  " + formatNumber(Cava.get(11).contar())  +"  ▓  ▓  " + formatNumber(Cava.get(10).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(9).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(8).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(7).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(6).contar())  + "  ▓        ▓        ▓  ▐\n" +
+                    "▌  ▓        ▓      ▓  " + formatacaoNumero(Casa.get(11).contar())  +"  ▓  ▓  " + formatacaoNumero(Casa.get(10).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(9).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(8).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(7).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(6).contar())  + "  ▓        ▓        ▓  ▐\n" +
                     "▌  ▓        ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓        ▓  ▐\n" +
                     "▌ ▓          ▓       ▓11▓      ▓10▓      ▓09▓      ▓08▓      ▓07▓      ▓06▓         ▓          ▓ ▐\n" +
-                    "▌ ▓    " + formatNumber(Armazem.get(1).contar())  + "    ▓                                                                      ▓    " + formatNumber(Armazem.get(0).contar()) + "    ▓ ▐\n" +
+                    "▌ ▓    " + formatacaoNumero(Armazem.get(1).contar())  + "    ▓                                                                      ▓    " + formatacaoNumero(Armazem.get(0).contar()) + "    ▓ ▐\n" +
                     "▌ ▓          ▓       ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓         ▓          ▓ ▐\n" +
                     "▌  ▓        ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓        ▓  ▐\n" +
-                    "▌  ▓        ▓      ▓  " + formatNumber(Cava.get(0).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(1).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(2).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(3).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(4).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(5).contar())  + "  ▓        ▓        ▓  ▐\n" +
+                    "▌  ▓        ▓      ▓  " + formatacaoNumero(Casa.get(0).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(1).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(2).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(3).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(4).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(5).contar())  + "  ▓        ▓        ▓  ▐\n" +
                     "▌   ▓▓    ▓▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓          ▓▓    ▓▓   ▐\n" +
                     "▌     ▓J2▓           ▓00▓      ▓01▓      ▓02▓      ▓03▓      ▓04▓      ▓05▓             ▓J1▓     ▐\n" +
                     "▌                                                                                                ▐\n" +
@@ -76,13 +75,13 @@ public class ITabuleiro {
                     "▌                                                                                                ▐\n" +
                     "▌     ▓▓▓▓           ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓             ▓▓▓▓     ▐\n" +
                     "▌   ▓▓    ▓▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓          ▓▓    ▓▓   ▐\n" +
-                    "▌  ▓        ▓      ▓  " + formatNumber(Cava.get(11).contar()) +"  ▓  ▓  " + formatNumber(Cava.get(10).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(9).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(8).contar()) + "  ▓  ▓  "+ formatNumber(Cava.get(7).contar()) +"  ▓  ▓  " + formatNumber(Cava.get(6).contar()) + "  ▓        ▓        ▓  ▐\n" +
+                    "▌  ▓        ▓      ▓  " + formatacaoNumero(Casa.get(11).contar()) +"  ▓  ▓  " + formatacaoNumero(Casa.get(10).contar()) + "  ▓  ▓  " + formatacaoNumero(Casa.get(9).contar()) + "  ▓  ▓  " + formatacaoNumero(Casa.get(8).contar()) + "  ▓  ▓  "+ formatacaoNumero(Casa.get(7).contar()) +"  ▓  ▓  " + formatacaoNumero(Casa.get(6).contar()) + "  ▓        ▓        ▓  ▐\n" +
                     "▌  ▓        ▓       ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓        ▓  ▐\n" +
                     "▌ ▓          ▓       ▓11▓      ▓10▓      ▓09▓      ▓08▓      ▓07▓      ▓06▓         ▓          ▓ ▐\n" +
-                    "▌ ▓    " + formatNumber(Armazem.get(1).contar())  + "    ▓                                                                      ▓    " + formatNumber(Armazem.get(0).contar())  + "    ▓ ▐\n" +
+                    "▌ ▓    " + formatacaoNumero(Armazem.get(1).contar())  + "    ▓                                                                      ▓    " + formatacaoNumero(Armazem.get(0).contar())  + "    ▓ ▐\n" +
                     "▌ ▓          ▓        ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓      ▓▓▓▓        ▓          ▓ ▐\n" +
                     "▌  ▓        ▓        ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓        ▓        ▓  ▐\n" +
-                    "▌  ▓        ▓       ▓  " + formatNumber(Cava.get(0).contar())  + "  ▓  ▓  " + formatNumber(Cava.get(1).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(2).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(3).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(4).contar()) + "  ▓  ▓  " + formatNumber(Cava.get(5).contar()) + "  ▓       ▓        ▓  ▐\n" +
+                    "▌  ▓        ▓       ▓  " + formatacaoNumero(Casa.get(0).contar())  + "  ▓  ▓  " + formatacaoNumero(Casa.get(1).contar()) + "  ▓  ▓  " + formatacaoNumero(Casa.get(2).contar()) + "  ▓  ▓  " + formatacaoNumero(Casa.get(3).contar()) + "  ▓  ▓  " + formatacaoNumero(Casa.get(4).contar()) + "  ▓  ▓  " + formatacaoNumero(Casa.get(5).contar()) + "  ▓       ▓        ▓  ▐\n" +
                     "▌   ▓▓    ▓▓         ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓    ▓         ▓▓    ▓▓   ▐\n" +
                     "▌     ▓J2▓            ▓00▓      ▓01▓      ▓02▓      ▓03▓      ▓04▓      ▓05▓            ▓J1▓     ▐\n" +
                     "▌                                                                                                ▐\n" +

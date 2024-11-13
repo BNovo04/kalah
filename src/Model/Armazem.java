@@ -1,6 +1,6 @@
 package Model.src.Model;
 
-public class Armazem extends Poco {
+public class Armazem extends Deposito {
 
     Armazem(NumeroJogador vez) {
         super(vez, 0);
